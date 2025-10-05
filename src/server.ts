@@ -9,14 +9,27 @@ import express, {
 } from "express";
 import cors from "cors";
 import apiRoutes from "@/routes/index.js";
+import https from "https";
+import fs from "fs";
 
+const SSL_KEY_PATH = "/home/ec2-user/certs/privkey.pem";
+const SSL_CERT_PATH = "/home/ec2-user/certs/fullchain.pem";
+
+
+
+const sslOptions = {
+  key: fs.readFileSync(SSL_KEY_PATH),
+  cert: fs.readFileSync(SSL_CERT_PATH),
+};
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 443;
 
+console.log(process.env.FRONTEND_URL);
 // Middleware
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:3000",
+    origin:["https://complayance-frontend.vercel.app"],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   }),
 );
@@ -65,10 +78,8 @@ app.use((req: Request, res: Response) => {
   });
 });
 
-app.listen({
-  port: Number(PORT),
-  host: '0.0.0.0'
-}, () => {
-  console.log(`Server is running on http://0.0.0.0:${PORT}`);
-  console.log(`Health check available at http://0.0.0.0:${PORT}/health`);
+https.createServer(sslOptions, app).listen(Number(PORT), "0.0.0.0", () => {
+  console.log(`HTTPS server running on https://0.0.0.0:${PORT}`);
+  console.log(`Health check available at https://0.0.0.0:${PORT}/health`);
 });
+
