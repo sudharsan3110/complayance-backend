@@ -65,8 +65,10 @@ app.use((req: Request, res: Response) => {
   });
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-  console.log(`Health check available at http://localhost:${PORT}/health`);
+app.listen({
+  port: Number(PORT),
+  host: '0.0.0.0'
+}, () => {
+  console.log(`Server is running on http://0.0.0.0:${PORT}`);
+  console.log(`Health check available at http://0.0.0.0:${PORT}/health`);
 });
