@@ -1,0 +1,7 @@
+invoice_id,issue_date,currency,total_excl_vat,vat_amount,total_incl_vat,seller_name,seller_trn,seller_country,seller_city,buyer_name,buyer_trn,buyer_country,buyer_city,sku,description,qty,unit_price,line_total
+INV-2025-005,2025-01-19,EURO,1200.00,180.00,1380.00,European Tech Ltd,EUR123456789012,DE,Berlin,German Corp,EUR987654321098,DE,Munich,MONITOR-001,Computer Monitor,3,400.00,1200.00
+INV-2025-006,2025-13-12,USD,1500.00,225.00,1725.00,US Solutions Inc,US1234567890123,US,New York,American Business,,US,Chicago,PRINTER-001,Office Printer,5,300.00,1500.00
+INV-2025-007,2025-01-21,AED,2000.00,300.00,2300.00,Dubai Trading,100111222333444,AE,Dubai,UAE Company,100555666777888,AE,Abu Dhabi,CHAIR-001,Office Chair,10,200.00,1980.00
+INV-2025-008,25/01/2025,SAR,800.00,120.00,920.00,Saudi Business,300123456789012,SA,Riyadh,KSA Corp,300987654321098,SA,Jeddah,TABLE-001,Meeting Table,2,400.00,800.00
+INV-2025-009,2025-01-23,USD,600.00,90.00,690.00,Tech Innovations,US9876543210987,US,Seattle,,US8888999000111,US,Portland,KEYBOARD-001,Wireless Keyboard,15,40.00,600.00
+INV-2025-010,2025-01-24,POUND,1000.00,200.00,1200.00,UK Solutions Ltd,GB1234567890123,GB,London,British Corp,GB9876543210987,GB,Manchester,MOUSE-001,Wireless Mouse,25,40.00,1000.00

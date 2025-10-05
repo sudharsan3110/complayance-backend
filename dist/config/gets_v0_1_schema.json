@@ -1,0 +1,143 @@
+{
+    "version": "0.1",
+    "name": "GETS (Global E-invoicing Transaction Standard)",
+    "description": "Mock GETS v0.1 schema for e-invoicing readiness analysis",
+    "fields": {
+        "invoice.id": {
+            "type": "string",
+            "required": true,
+            "description": "Unique invoice identifier",
+            "category": "header"
+        },
+        "invoice.issue_date": {
+            "type": "date",
+            "required": true,
+            "format": "YYYY-MM-DD",
+            "description": "Invoice issue date in ISO format",
+            "category": "header"
+        },
+        "invoice.currency": {
+            "type": "string",
+            "required": true,
+            "enum": ["AED", "SAR", "MYR", "USD"],
+            "description": "Invoice currency code",
+            "category": "header"
+        },
+        "invoice.total_excl_vat": {
+            "type": "number",
+            "required": true,
+            "description": "Total amount excluding VAT",
+            "category": "header"
+        },
+        "invoice.vat_amount": {
+            "type": "number",
+            "required": true,
+            "description": "Total VAT amount",
+            "category": "header"
+        },
+        "invoice.total_incl_vat": {
+            "type": "number",
+            "required": true,
+            "description": "Total amount including VAT",
+            "category": "header"
+        },
+        "seller.name": {
+            "type": "string",
+            "required": true,
+            "description": "Seller company name",
+            "category": "seller"
+        },
+        "seller.trn": {
+            "type": "string",
+            "required": true,
+            "description": "Seller tax registration number",
+            "category": "seller"
+        },
+        "seller.country": {
+            "type": "string",
+            "required": true,
+            "format": "ISO-2",
+            "description": "Seller country code (ISO 2-letter)",
+            "category": "seller"
+        },
+        "seller.city": {
+            "type": "string",
+            "required": true,
+            "description": "Seller city",
+            "category": "seller"
+        },
+        "buyer.name": {
+            "type": "string",
+            "required": true,
+            "description": "Buyer company name",
+            "category": "buyer"
+        },
+        "buyer.trn": {
+            "type": "string",
+            "required": true,
+            "description": "Buyer tax registration number",
+            "category": "buyer"
+        },
+        "buyer.country": {
+            "type": "string",
+            "required": true,
+            "format": "ISO-2",
+            "description": "Buyer country code (ISO 2-letter)",
+            "category": "buyer"
+        },
+        "buyer.city": {
+            "type": "string",
+            "required": true,
+            "description": "Buyer city",
+            "category": "buyer"
+        },
+        "lines[].sku": {
+            "type": "string",
+            "required": true,
+            "description": "Product SKU/code",
+            "category": "lines"
+        },
+        "lines[].description": {
+            "type": "string",
+            "required": true,
+            "description": "Product description",
+            "category": "lines"
+        },
+        "lines[].qty": {
+            "type": "number",
+            "required": true,
+            "description": "Quantity",
+            "category": "lines"
+        },
+        "lines[].unit_price": {
+            "type": "number",
+            "required": true,
+            "description": "Unit price",
+            "category": "lines"
+        },
+        "lines[].line_total": {
+            "type": "number",
+            "required": true,
+            "description": "Line total amount",
+            "category": "lines"
+        }
+    },
+    "categories": {
+        "header": {
+            "weight": 0.35,
+            "description": "Invoice header information"
+        },
+        "seller": {
+            "weight": 0.25,
+            "description": "Seller/supplier information"
+        },
+        "buyer": {
+            "weight": 0.25,
+            "description": "Buyer/customer information"
+        },
+        "lines": {
+            "weight": 0.15,
+            "description": "Invoice line items"
+        }
+    }
+}

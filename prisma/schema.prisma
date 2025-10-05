@@ -1,0 +1,84 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Upload model - stores raw data and metadata
+model Upload {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  rawData     String   // Full raw CSV/JSON string
+  rowsParsed  Int      // Number of rows successfully parsed
+  country     String?  // Optional country context
+  erp         String?  // Optional ERP system context
+  contentType String   @default("csv") // csv or json
+  
+  // Relations
+  reports     Report[]
+  
+  @@map("uploads")
+}
+
+// Report model - stores analysis results
+model Report {
+  id            String   @id @default(cuid())
+  createdAt     DateTime @default(now())
+  expiresAt     DateTime? // Optional expiration date (≥7 days retention)
+  
+  // Foreign key to upload
+  uploadId      String
+  upload        Upload   @relation(fields: [uploadId], references: [id], onDelete: Cascade)
+  
+  // Report data (stored as JSON)
+  reportJson    Json     // Complete report JSON as stored in database
+  
+  // Denormalized fields for quick queries (P1 feature)
+  scoresOverall Int      // Overall score (0-100) for quick sorting
+  country       String?  // Copied from upload for filtering
+  erp           String?  // Copied from upload for filtering
+  
+  @@map("reports")
+}
+
+// Field mapping model - stores detected field mappings (optional for P1)
+model FieldMapping {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  uploadId    String
+  reportId    String?
+  
+  // Field mapping data
+  sourceField String   // Original field name from upload
+  targetField String   // Mapped GETS field name
+  confidence  Float    // Confidence score (0-1)
+  matchType   String   // "exact", "close", "missing"
+  
+  @@map("field_mappings")
+}
+
+// Analysis session model - tracks analysis sessions (optional for P1)
+model AnalysisSession {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  uploadId    String
+  reportId    String?
+  
+  // Session metadata
+  questionnaire Json   // Questionnaire responses
+  processingTime Int   // Processing time in milliseconds
+  status       String  // "processing", "completed", "failed"
+  errorMessage String? // Error message if failed
+  
+  @@map("analysis_sessions")
+}

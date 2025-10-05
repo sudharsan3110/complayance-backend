@@ -1,0 +1,102 @@
+[
+  {
+    "invoice_id": "INV-2025-001",
+    "issue_date": "2025-01-15",
+    "currency": "USD",
+    "total_excl_vat": 1000.00,
+    "vat_amount": 150.00,
+    "total_incl_vat": 1150.00,
+    "seller_name": "Tech Solutions LLC",
+    "seller_trn": "100123456700003",
+    "seller_country": "AE",
+    "seller_city": "Dubai",
+    "buyer_name": "Global Corp",
+    "buyer_trn": "300987654321007",
+    "buyer_country": "AE",
+    "buyer_city": "Abu Dhabi",
+    "lines": [
+      {
+        "sku": "LAPTOP-001",
+        "description": "Business Laptop",
+        "qty": 2,
+        "unit_price": 500.00,
+        "line_total": 1000.00
+      }
+    ]
+  },
+  {
+    "invoice_id": "INV-2025-002",
+    "issue_date": "2025-01-16",
+    "currency": "AED",
+    "total_excl_vat": 2000.00,
+    "vat_amount": 100.00,
+    "total_incl_vat": 2100.00,
+    "seller_name": "UAE Trading Co",
+    "seller_trn": "100555666777003",
+    "seller_country": "AE",
+    "seller_city": "Dubai",
+    "buyer_name": "Emirates Business",
+    "buyer_trn": "100888999000003",
+    "buyer_country": "AE",
+    "buyer_city": "Sharjah",
+    "lines": [
+      {
+        "sku": "DESK-001",
+        "description": "Office Desk",
+        "qty": 10,
+        "unit_price": 200.00,
+        "line_total": 2000.00
+      }
+    ]
+  },
+  {
+    "invoice_id": "INV-2025-003",
+    "issue_date": "2025-01-17",
+    "currency": "SAR",
+    "total_excl_vat": 1500.00,
+    "vat_amount": 225.00,
+    "total_incl_vat": 1725.00,
+    "seller_name": "Saudi Tech Solutions",
+    "seller_trn": "300123456789012",
+    "seller_country": "SA",
+    "seller_city": "Riyadh",
+    "buyer_name": "KSA Industries",
+    "buyer_trn": "300987654321098",
+    "buyer_country": "SA",
+    "buyer_city": "Jeddah",
+    "lines": [
+      {
+        "sku": "PHONE-001",
+        "description": "Business Phone",
+        "qty": 5,
+        "unit_price": 300.00,
+        "line_total": 1500.00
+      }
+    ]
+  },
+  {
+    "invoice_id": "INV-2025-004",
+    "issue_date": "2025-01-18",
+    "currency": "MYR",
+    "total_excl_vat": 800.00,
+    "vat_amount": 48.00,
+    "total_incl_vat": 848.00,
+    "seller_name": "Malaysia Services Sdn Bhd",
+    "seller_trn": "201234567890123",
+    "seller_country": "MY",
+    "seller_city": "Kuala Lumpur",
+    "buyer_name": "MY Corp Bhd",
+    "buyer_trn": "209876543210987",
+    "buyer_country": "MY",
+    "buyer_city": "Penang",
+    "lines": [
+      {
+        "sku": "TABLET-001",
+        "description": "Tablet Device",
+        "qty": 4,
+        "unit_price": 200.00,
+        "line_total": 800.00
+      }
+    ]
+  }
+]
