@@ -8,5 +8,6 @@ router.get("/health", getHealth);
 router.use("/upload", uploadRoutes);
 router.use("/analyze", analysisRoutes);
 router.use("/report", reportRoutes);
+router.use("/reports", reportRoutes);
 export default router;
 //# sourceMappingURL=index.js.map
